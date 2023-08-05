@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>PazPyScript</title>
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  <style>
+    
+  </style>
+</head>
+
+<body>
+  <h1 style="color: cornflowerblue;">Students Of Paz PyScript!!!</h1>
+  <div id="request_status"></div>
+  <div id="request_text"></div>
+  <py-script>
+    from pyodide.http import pyfetch
+    import asyncio
+    import json
+    
+    response = await pyfetch(url="http://localhost:3000/students", method="GET")
+    status = f"Request status: {response.status}"
+    
+    response_list = await response.json()
+    
+    for student in response_list:
+      name = student["name"]
+      age = student["age"]
+      grade = student["grade"]
+      student_json = {"name": name, "age": age, "grade": grade}
+      print(json.dumps(student_json))
+    
+    pyscript.write('request_status', status)
+            
+
+    
+    <!-- id = response_list[0]["id"]
+    name = response_list[0]["name"]
+    age = response_list[0]["age"]
+    grade = response_list[0]["grade"] -->
+    
+    text = f"Text: {id}"
+    text = f"Text: {name}"
+
+
+    pyscript.write('request_status', status)
+    pyscript.write('request_text', text)
+  </py-script>
+</body>
+
+</html>
