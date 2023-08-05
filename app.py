@@ -2,7 +2,7 @@ import pymongo
 
 # Replace 'your_username' and 'your_password' with your MongoDB Atlas credentials.
 username = "Paz"
-password = "paz053239"
+password = ""
 cluster_name = "atlascluster.vkj98qo.mongodb.net"
 
 # Construct the connection string without the 'srv' option
